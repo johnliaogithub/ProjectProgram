@@ -1,0 +1,16 @@
+
+# Node
+node_modules/
+.next/
+
+# Python
+__pycache__/
+venv/
+
+# Docker
+*.log
+*.pid
+
+# Env files
+.env
+
