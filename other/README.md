@@ -12,7 +12,7 @@ In this doc, empty spaces are denoted _. Currently, the modified version is used
 
 ## Demo
 
-A 4 by 4 version (unmodified version):
+A 4 by 4 version (original version):
 [Watch on Youtube](https://youtu.be/Vp3NuS2XSRU)
 
 ---
@@ -36,17 +36,25 @@ These are more detailed collapsing mechanics
   - Upon pressing right, a "5 - 9 - 3" column simplifies to "_ _ 5 - 6" instead of "_ _ -4 - 3"
 - Operations are always from left to right or from up to down
   - Upon pressing right, a "5 - 4" column collapses to "_ _ 1" instead of "_ _ -1"
-- If there are gaps between a binary arithmetic expression, collapsing would get rid of the extra gaps **and** simplify the expression into a single number tile (for the modified version).
-  - Upon pressing left, "8 + _ 0" simplifies to "8 _ _ _" instead of "8 + 0 _" for the unmodified version
 - If there are no gaps between a binary arithmetic expression, collapsing would simplify it into a single number tile
   - Upon pressing left, "_ 1 + 2 _" simplifies to "3 _ _ _ _" instead of "1 + 2 _ _"
+- If there are gaps between a binary arithmetic expression
+  - In the original version, collapsing would get rid of the extra gaps, but would **NOT** simplify the expression into a single number tile
+    - Upon pressing left, "8 + _ 0" simplifies to "8 + 0 _" instead of "8 _ _ _" 
+  - In other versions, collapsing would get rid of the extra gaps **and** simplify the expression into a single number tile
+    - Upon pressing left, "8 + _ 0" simplifies to "8 _ _ _" instead of "8 + 0 _"
+- The same operators can also collapse in some versions
+  - In game_final, + + + + collapses into +
+  - In game_modified_2, + + + + collapses into + +
 
 ---
 
 ## Statistics
-Below are the statistics of trial runs with randomly-generated moves:
+Below are some statistics of trial runs with randomly-generated moves:
 
 **Only +, - included:**
+
+2 tiles spawn every turn
 
 | Grid Size | # Games | # Wins | Win% | Avg.# Moves (Overall) | Avg.# Moves (Win)
 |-----------|---------|--------|------|-----------------------|------------------|
@@ -58,6 +66,11 @@ Below are the statistics of trial runs with randomly-generated moves:
 
 **+, -, \* included:**
 
+I also tried the 6 x 7 with the multiplication operation included (unmodified version).
+I won 1 game out of 6, and the games took 57 moves on average.
+
+2 tiles spawn every turn
+
 | Grid Size | # Games | # Wins | Win% | Avg.# Moves (Overall) | Avg.# Moves (Win)
 |-----------|---------|--------|------|-----------------------|------------------|
 | 6 x 7 | 10,000 | 125 | 1.25 | 49 | 41 |
@@ -66,7 +79,9 @@ Below are the statistics of trial runs with randomly-generated moves:
 | 9 x 9 | 1,000 | 118 | 11.8 | 298 | 194 |
 | 10 x 10 | 1,000 | 292 | 29.2 | 632 | 563 |
 
-**+, -, \* included (modified version):**
+**+, -, \* included (empty spaces ignored):**
+
+2 tiles spawn every turn
 
 | Grid Size | # Games | # Wins | Win% | Avg.# Moves (Overall) | Avg.# Moves (Win)
 |-----------|---------|--------|------|-----------------------|------------------|
@@ -76,7 +91,83 @@ Below are the statistics of trial runs with randomly-generated moves:
 | 9 x 9 | 1,000 | 125 | 12.5 | 311 | 218 |
 | 10 x 10 | 1,000 | 294 | 29.4 | 643 | 542 |
 
-I also tried the 6 x 7 with the multiplication operation included (unmodified version).
-I won 1 game out of 6, and the games took 57 moves on average.
+**+, - included (empty spaces ignored and same operators collapse fully):**
 
----
+Operator spawn rate: 67%
+2 tiles spawn every turn
+
+| Grid Size | # Games | # Wins | Win% | Avg.# Moves (Overall) | Avg.# Moves (Win)
+|-----------|---------|--------|------|-----------------------|------------------|
+| 6 x 7 | 5,000 | 166 | 3.32 | 278 | 325 |
+
+**+, -, \* included (empty spaces ignored and same operators collapse fully):**
+
+Operator spawn rate: 60%
+2 tiles spawn every turn
+
+| Grid Size | # Games | # Wins | Win% | Avg.# Moves (Overall) | Avg.# Moves (Win)
+|-----------|---------|--------|------|-----------------------|------------------|
+| 5 x 5 | 10,000 | 100 | 1.00 | 44 | 38 |
+| 6 x 6 | 10,000 | 314 | 3.14 | 106 | 72 |
+| 6 x 7 | 5,000 | 271 | 5.42 | 157 | 106 |
+| 7 x 7 | 3,000 | 249 | 8.30 | 239 | 156 |
+| 8 x 8 | 1,000 | 200 | 20.0 | 518 | 380 |
+
+Operator spawn rate: 67%
+2 tiles spawn every turn
+
+| Grid Size | # Games | # Wins | Win% | Avg.# Moves (Overall) | Avg.# Moves (Win)
+|-----------|---------|--------|------|-----------------------|------------------|
+| 5 x 5 | 10,000 | 114 | 1.14 | 51 | 43 |
+| 6 x 6 | 5,000 | 288 | 5.76 | 186 | 139 |
+| 6 x 7 | 5,000 | 687 | 13.7 | 407 | 333 |
+| 7 x 7 | 1,000 | 325 | 32.5 | 1152 | 1007 |
+
+Operator spawn rate: 67%
+3 tiles spawn every turn
+
+| Grid Size | # Games | # Wins | Win% | Avg.# Moves (Overall) | Avg.# Moves (Win)
+|-----------|---------|--------|------|-----------------------|------------------|
+| 5 x 5 | 10,000 | 73 | 0.73 | 30 | 27 |
+| 6 x 6 | 10,000 | 283 | 2.83 | 77 | 60 |
+| 6 x 7 | 5,000 | 281 | 5.62 | 133 | 100 |
+| 7 x 7 | 3,000 | 356 | 11.9 | 279 | 218 |
+| 8 x 8 | 1,000 | 625 | 62.5 | 1315 | 1263 |
+
+Operator spawn rate: 67%
+4 tiles spawn every turn
+
+| Grid Size | # Games | # Wins | Win% | Avg.# Moves (Overall) | Avg.# Moves (Win)
+|-----------|---------|--------|------|-----------------------|------------------|
+| 5 x 5 | 10,000 | 53 | 0.53 | 23 | 20 |
+| 6 x 6 | 10,000 | 193 | 1.93 | 50 | 41 |
+| 6 x 7 | 5,000 | 206 | 4.12 | 78 | 55 |
+| 7 x 7 | 3,000 | 241 | 8.03 | 141 | 101 |
+| 8 x 8 | 1,000 | 328 | 32.8 | 528 | 448 |
+
+**+, - included (empty spaces ignored and same operators collapse partially)**
+
+Operator spawn rate: 67%
+2 tiles spawn every turn
+
+| Grid Size | # Games | # Wins | Win% | Avg.# Moves (Overall) | Avg.# Moves (Win)
+|-----------|---------|--------|------|-----------------------|------------------|
+| 6 x 7 | 5,000 | 180 | 3.60 | 278 | 310 |
+
+**+, -, \* included (empty spaces ignored and same operators collapse partially)**
+
+Operator spawn rate: 67%
+2 tiles spawn every turn
+
+| Grid Size | # Games | # Wins | Win% | Avg.# Moves (Overall) | Avg.# Moves (Win)
+|-----------|---------|--------|------|-----------------------|------------------|
+| 6 x 7 | 5,000 | 612 | 12.2 | 420 | 314 |
+
+Operator spawn rate: 67%
+4 tiles spawn every turn
+
+| Grid Size | # Games | # Wins | Win% | Avg.# Moves (Overall) | Avg.# Moves (Win)
+|-----------|---------|--------|------|-----------------------|------------------|
+| 6 x 7 | 5,000 | 219 | 4.38 | 80 | 59 |
+
+___
