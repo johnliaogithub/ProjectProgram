@@ -201,7 +201,7 @@ class Game:
     def is_won(self) -> bool:
         for i in range (self._num_rows):
             for j in range (self._num_cols):
-                if self._grid[i][j] == 67:
+                if self._grid[i][j] == "67":
                     return True
         return False
 
