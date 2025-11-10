@@ -1,4 +1,7 @@
 from flask import Flask, jsonify, render_template, request
+import sys, os
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
 from backend.game_manager import GameManager
 
 app = Flask(__name__)
