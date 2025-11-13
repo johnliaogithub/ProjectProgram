@@ -95,7 +95,7 @@ class Game:
         self._generated_operations = ["+", "-", "*"]
         self._prob_operations = 0.67
         self._generated_digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-        self._num_generated_tiles = 4 # set this to somewhere between 2 to 4
+        self._num_generated_tiles = 2 # set this to somewhere between 2 to 4
         self._round_num = 1
 
     def __str__(self):
