@@ -171,5 +171,3 @@ Operator spawn rate: 67%
 | 6 x 7 | 5,000 | 219 | 4.38 | 80 | 59 |
 
 ___
-
-# The python environment for this directory is the same as that of backend
